@@ -1,6 +1,6 @@
 from flask import Flask, request
 from telegram import Bot, Update
-from telegram.ext import Dispatcher, MessageHandler, CommandHandler, Filters
+from telegram.ext import Dispatcher, MessageHandler, CommandHandler, Filters, CallbackQueryHandler
 import os
 
 from main import (
@@ -30,7 +30,7 @@ def main():
         
         dp.add_handler(CommandHandler('start', callback=start))
         dp.add_handler(MessageHandler(Filters.photo, callback=add_photo))
-        dp.add_handler(CommandHandler(like))
+        dp.add_handler(CallbackQueryHandler(callback=like))
 
         dp.process_update(update) # process update
         return 'hello'
