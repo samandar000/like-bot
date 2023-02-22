@@ -28,8 +28,8 @@ def main():
 
         dp: Dispatcher = Dispatcher(bot, None, workers=0)  # dispatcher   
         
-        dp.add_handler(CommandHandler('start', start))
-        dp.add_handler(MessageHandler(Filters.photo, add_photo))
+        dp.add_handler(CommandHandler('start', callback=start))
+        dp.add_handler(MessageHandler(Filters.photo, callback=add_photo))
         dp.add_handler(CommandHandler(like))
 
         dp.process_update(update) # process update
