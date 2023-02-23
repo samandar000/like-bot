@@ -4,7 +4,7 @@ import os
 import requests
 
 TOKEN = os.environ['TOKEN']
-chennal_username = '@like_test_122313'
+chennal_username = '@mine_like_count'
 
 
 def start(update: Update, context: CallbackContext):
@@ -37,13 +37,13 @@ def like(update: Update, context: CallbackContext):
     user_id = update.callback_query.from_user.id
     # print(user_id)
     if callback_data.startswith('like'):
-        r = requests.post('https://djdev001.pythonanywhere.com/api/like/', json={'doc_id': doc_id, 'chat_id': user_id})
+        r = requests.post('https://pardayevsamandar.pythonanywhere.com/api/like/', json={'doc_id': doc_id, 'chat_id': user_id})
         # print(r.json())
     else:
-        r = requests.post('https://djdev001.pythonanywhere.com/api/dislike/', json={'doc_id': doc_id, 'chat_id': user_id})
+        r = requests.post('https://pardayevsamandar.pythonanywhere.com/api/dislike/', json={'doc_id': doc_id, 'chat_id': user_id})
         # print(r.json())
 
-    r = requests.get(f'https://djdev001.pythonanywhere.com/api/get-data/{doc_id}')
+    r = requests.get(f'https://pardayevsamandar.pythonanywhere.com/api/get-data/{doc_id}')
     data = r.json()
 
     btns = [
